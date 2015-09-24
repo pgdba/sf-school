@@ -18,9 +18,21 @@ class Version20150922145031 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() != 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, username VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, type INT NOT NULL, isActive TINYINT(1) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
-        $this->addSql('DROP TABLE product');
-        $this->addSql('DROP TABLE task');
+        $this->addSql('
+          CREATE TABLE user (
+            id INT AUTO_INCREMENT NOT NULL
+            , username VARCHAR(255) NOT NULL
+            , password VARCHAR(255) NOT NULL
+            , email VARCHAR(255) NOT NULL
+            , type INT NOT NULL
+            , isActive TINYINT(1) NOT NULL
+            , PRIMARY KEY(id)
+          )
+          DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci
+          ENGINE = InnoDB
+        ');
+        $this->addSql('DROP TABLE IF EXISTS product');
+        $this->addSql('DROP TABLE IF EXISTS task');
     }
 
     /**

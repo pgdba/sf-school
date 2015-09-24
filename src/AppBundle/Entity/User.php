@@ -53,7 +53,7 @@ class User implements UserInterface, \Serializable {
     /**
      * @var boolean
      *
-     * @ORM\Column(name="isActive", type="boolean")
+     * @ORM\Column(name="is_active", type="boolean")
      */
     private $isActive;
 
